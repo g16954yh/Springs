@@ -93,7 +93,7 @@ public class About extends JDialog {
         mainPanel.add(copyrightTextArea, gridBagConstraints);
 
         closeButton.setMnemonic('C');
-        closeButton.setText("Close");
+        closeButton.setText("閉じる");
         closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeButtonActionPerformed(evt);
