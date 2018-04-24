@@ -42,6 +42,7 @@ import javax.swing.SwingUtilities;
  * Main window of the Anagram Game application.
  */
 public class Anagrams extends JFrame {
+	
 
     public static void main(String[] args) {
         /* Set the Nimbus look and feel */
@@ -130,14 +131,18 @@ public class Anagrams extends JFrame {
         mainPanel.setMinimumSize(new java.awt.Dimension(297, 200));
         mainPanel.setLayout(new java.awt.GridBagLayout());
 
+
+        
         scrambledLabel.setText("Scrambled Word:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 6);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 12, 0);
         mainPanel.add(scrambledLabel, gridBagConstraints);
+       
+       
 
         scrambledWord.setEditable(false);
         scrambledWord.setColumns(20);
