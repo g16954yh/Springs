@@ -29,11 +29,13 @@
 	
 	/* Anagram Game Application */
 	
-	package com.toy.anagrams.lib;
+	
 	import java.util.ArrayList;
 	import java.util.Arrays;
 	import java.util.Collections;
 	import java.util.List;
+
+import com.toy.anagrams.ui.Anagrams;
 	/**
 	 * Implementation of the logic for the Anagram Game application.
 	 */
@@ -89,7 +91,10 @@
 	        };
 	    
 	    
-	    public static String anagram(String s) {
+	    public static String anagram(String s, int r) {
+	    	int repeat;
+	    	repeat = (int)(Math.random()*3);
+	    	StaticWordLibrary swl = new StaticWordLibrary();
 	        if (s.length() < 2) {
 	            return s;
 	        }
@@ -103,7 +108,15 @@
 	        
 	        do {    
 	            do {    
-	                Collections.shuffle(list);
+	                if(r == 0) {
+	                	Collections.swap(list, repeat, 4);
+	                }else if(r == 1) {
+	                	for(int i=0; i<swl.getSize()-1; i++) {
+	                		Collections.swap(list, (int)(Math.random()*i), 4);
+	                	}
+	                }else {
+	                	Collections.shuffle(list);
+	                }
 	            } while (isIllegalCharacters(list));
 	            
 	            cs = new char[list.size()];
@@ -158,8 +171,8 @@
 	     * @param idx index of required word
 	     * @return word at that index in its scrambled form
 	     */
-	    public String getScrambledWord(int idx) {
-	        return anagram(WORD_LIST[idx]);
+	    public String getScrambledWord(int idx, int r) {
+	        return anagram(WORD_LIST[idx], r);
 	    }
 	
 	    /**
@@ -178,6 +191,10 @@
 	     */
 	    public boolean isCorrect(int idx, String userGuess) {
 	        return userGuess.equals(getWord(idx));
+	    }
+	    
+	    public int repeat(int r) {
+	    	return r;
 	    }
 	
 	}
