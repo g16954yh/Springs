@@ -77,15 +77,15 @@ public class Anagrams extends JFrame {
     }
 
     private int wordIdx = 0;
-    private WordLibrary wordLibrary;
+    private int r = 1;
+    private WordLibrary wordLibrary = WordLibrary.getDefault();
 
     /** Creates new form Anagrams */
     public Anagrams() {
-        wordLibrary = WordLibrary.getDefault();
         
         initComponents();
         getRootPane().setDefaultButton(guessButton);
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx, r));
         pack();
         guessedWord.requestFocusInWindow();
         // Center in the screen
@@ -223,6 +223,7 @@ public class Anagrams extends JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         mainPanel.add(selectLevel, gridBagConstraints);
+        
 
         getContentPane().add(mainPanel, java.awt.BorderLayout.CENTER);
 
@@ -261,8 +262,9 @@ public class Anagrams extends JFrame {
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
         wordIdx = (wordIdx + 1) % wordLibrary.getSize();
 
+        int repeat = selectLevel.getSelectedIndex();
         feedbackLabel.setText(" ");
-        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
+        scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx, repeat));
         guessedWord.setText("");
         getRootPane().setDefaultButton(guessButton);
 

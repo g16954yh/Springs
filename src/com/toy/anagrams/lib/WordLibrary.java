@@ -60,7 +60,7 @@ public abstract class WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public abstract String getScrambledWord(int idx);
+    public abstract String getScrambledWord(int idx, int r);
 
     /**
      * Gets the number of words in the library.
@@ -75,4 +75,6 @@ public abstract class WordLibrary {
      * @return true if the guess was correct; false otherwise
      */
     public abstract boolean isCorrect(int idx, String userGuess);
+    
+    public abstract int repeat(int r);
 }
